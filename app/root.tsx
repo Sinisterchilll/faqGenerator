@@ -13,7 +13,8 @@ export default function App() {
   return (
     <html lang="en">
       <head>
-        <Meta />
+      <meta charSet="utf-8" /> Add charset meta tag
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <Links />
       </head>
       <body>

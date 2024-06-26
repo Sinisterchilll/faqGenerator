@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinner {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: #ffffff; /* Green background */
+  border-radius: 10px;
+  cursor: pointer; /* Cursor on hover */
+  border: 1px solid #145DEE;
+}
+
+.range-slider {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    width: 100%; /* Full width of container */
+    height: 8px; /* Height of the slider line */
+    background: linear-gradient(to right, #145dee 0%, #e5e7eb 0%);
+    border-radius: 10px; /* Rounded corners */
+    outline: none; /* Remove default focus styling */
+  }
+
+.range-slider {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    width: 100%; /* Full width of container */
+    height: 8px; /* Height of the slider line */
+    background: linear-gradient(to right, #145DEE 0%, #145DEE 50%, #E5E7EB 50%, #E5E7EB 100%);
+    border-radius: 10px; /* Rounded corners */
+    outline: none; /* Remove default focus styling */
+    overflow: visible; /* Allow the ::before pseudo-element to overflow */
+  }

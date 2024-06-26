@@ -14,7 +14,7 @@ export const action: ActionFunction = async ({ request }) => {
         model: "gpt-3.5-turbo-0125", // Use the correct model ID from your response
         messages: [{
           role: "user",
-          content: `Generate ${numQuestions} FAQs in ${language} with a ${persona} persona based on the following content: ${content}`,
+          content: `Generate ${numQuestions} FAQs in ${language} with a ${persona} persona based on the following content: ${content} wit answers`,
           max_tokens: 150,
           stop: ["\n"],
           temperature: 0.7
