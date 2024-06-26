@@ -5,7 +5,7 @@ import axios from "axios";
 export const action: ActionFunction = async ({ request }) => {
   try {
     const body = await request.json();
-    const { content, numQuestions, language, persona } = body;
+    const { content, numQuestions, language, persona, topic } = body;
 
     // Ensure content, numQuestions, language, persona are properly used
     const response = await axios.post(
@@ -14,10 +14,11 @@ export const action: ActionFunction = async ({ request }) => {
         model: "gpt-3.5-turbo-0125", // Use the correct model ID from your response
         messages: [{
           role: "user",
-          content: `Generate ${numQuestions} FAQs in ${language} with a ${persona} persona based on the following content: ${content} wit answers`,
+          content: `Generate ${numQuestions} FAQs in ${language} with a ${persona} persona based on the following content: ${content} with answers if content not given the on the following topic: ${topic} `,
           max_tokens: 150,
           stop: ["\n"],
-          temperature: 0.7
+          temperature: 0.7,
+          stream: true
         }]
       },
       {

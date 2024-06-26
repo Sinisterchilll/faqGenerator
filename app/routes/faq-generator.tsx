@@ -9,6 +9,7 @@ export default function FaqGenerator() {
   const [persona, setPersona] = useState('professional');
   const [faqs, setFaqs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  const [topic, setTopic] = useState('')
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>, setNumQuestions: React.Dispatch<React.SetStateAction<number>>, minValue: number, maxValue: number) => {
     let value = parseInt(e.target.value);
@@ -30,6 +31,7 @@ export default function FaqGenerator() {
         numQuestions,
         language,
         persona,
+        topic
       });
       setFaqs(response.data.faqs);
     } catch (error) {
@@ -65,7 +67,9 @@ export default function FaqGenerator() {
                 </label>
                 <div className="mt-2">
                   <input 
+                      value={topic}
                       type="text" 
+                      onChange={(e) => setTopic(e.target.value)}
                       placeholder="Eg. Crypto, Online Payments, Leather shoes" 
                       className=" p-2 block w-full py-2 text-gray-900 transition-all duration-150 border-0 shadow-sm rounded-xl ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 caret-blue-600 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6" />
                 </div>
@@ -141,8 +145,8 @@ export default function FaqGenerator() {
                   value={persona}
                   onChange={(e) => setPersona(e.target.value)}>
 
-                  <option value="Friendly" selected>
-                    Friendly
+                  <option value="Professional" selected>
+                    Professional
                   </option>
                   <option value="Formal">
                     Formal
@@ -156,8 +160,8 @@ export default function FaqGenerator() {
                   <option value="Excited">
                     Excited
                   </option>
-                  <option value="Professional">
-                    Professional
+                  <option value="Friendly">
+                    Friendly
                   </option>
                 </select>
               </div>
@@ -169,7 +173,7 @@ export default function FaqGenerator() {
               disabled={loading}
             >
               {loading ? 'Generating...' : 'Generate FAQs'}
-              Generate FAQs
+              
             </button>
           </div>
 
