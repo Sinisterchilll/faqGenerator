@@ -4,12 +4,12 @@ import axios from 'axios'; // Import Axios for HTTP requests
 
 export default function FaqGenerator() {
   const [content, setContent] = useState('');
-  const [numQuestions, setNumQuestions] = useState(5);
-  const [language, setLanguage] = useState('en');
+  const [numQuestions, setNumQuestions] = useState(10);
+  const [language, setLanguage] = useState('English');
   const [persona, setPersona] = useState('professional');
   const [faqs, setFaqs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [topic, setTopic] = useState('')
+  
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>, setNumQuestions: React.Dispatch<React.SetStateAction<number>>, minValue: number, maxValue: number) => {
     let value = parseInt(e.target.value);
@@ -30,8 +30,7 @@ export default function FaqGenerator() {
         content,
         numQuestions,
         language,
-        persona,
-        topic
+        persona
       });
       setFaqs(response.data.faqs);
     } catch (error) {
@@ -61,19 +60,7 @@ export default function FaqGenerator() {
           <div className=" sm:w-2/3 p-8 bg-gray-50 flex flex-col gap-8">
             <div className="flex flex-col gap-6">
 
-              <div>
-                <label className="block text-sm font-medium leading-6 text-gray-900">
-                  Enter the Topic
-                </label>
-                <div className="mt-2">
-                  <input 
-                      value={topic}
-                      type="text" 
-                      onChange={(e) => setTopic(e.target.value)}
-                      placeholder="Eg. Crypto, Online Payments, Leather shoes" 
-                      className=" p-2 block w-full py-2 text-gray-900 transition-all duration-150 border-0 shadow-sm rounded-xl ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 caret-blue-600 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6" />
-                </div>
-              </div>
+              
               <div>
                 <div className="flex gap-2">
                   <label className="block text-sm font-medium leading-6 text-gray-900 ">
@@ -106,6 +93,92 @@ export default function FaqGenerator() {
                     onChange={(e) => setContent(e.target.value)}></textarea>
                 </div>
               </div>
+
+              <div>
+                <label className="block text-sm font-medium leading-6 text-gray-900">
+                  Select Language
+                </label>
+                <select
+                  className=" appearance-none p-2 block w-full py-2 text-gray-900 border-0 shadow-sm bg-white rounded-xl ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  id="lamguage"
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}>
+
+<option value="Afrikaans">Afrikaans</option>
+  <option value="Albanian">Albanian</option>
+  <option value="Arabic">Arabic</option>
+  <option value="Armenian">Armenian</option>
+  <option value="Basque">Basque</option>
+  <option value="Bengali">Bengali</option>
+  <option value="Bulgarian">Bulgarian</option>
+  <option value="Catalan">Catalan</option>
+  <option value="Cambodian">Cambodian</option>
+  <option value="Chinese (Mandarin)">Chinese (Mandarin)</option>
+  <option value="Croatian">Croatian</option>
+  <option value="Czech">Czech</option>
+  <option value="Danish">Danish</option>
+  <option value="Dutch">Dutch</option>
+  <option value="English">English</option>
+  <option value="Estonian">Estonian</option>
+  <option value="Fiji">Fiji</option>
+  <option value="Finnish">Finnish</option>
+  <option value="French">French</option>
+  <option value="Georgian">Georgian</option>
+  <option value="German">German</option>
+  <option value="Greek">Greek</option>
+  <option value="Gujarati">Gujarati</option>
+  <option value="Hebrew">Hebrew</option>
+  <option value="Hindi">Hindi</option>
+  <option value="Hungarian">Hungarian</option>
+  <option value="Icelandic">Icelandic</option>
+  <option value="Indonesian">Indonesian</option>
+  <option value="Irish">Irish</option>
+  <option value="Italian">Italian</option>
+  <option value="Japanese">Japanese</option>
+  <option value="Javanese">Javanese</option>
+  <option value="Korean">Korean</option>
+  <option value="Latin">Latin</option>
+  <option value="Latvian">Latvian</option>
+  <option value="Lithuanian">Lithuanian</option>
+  <option value="Macedonian">Macedonian</option>
+  <option value="Malay">Malay</option>
+  <option value="Malayalam">Malayalam</option>
+  <option value="Maltese">Maltese</option>
+  <option value="Maori">Maori</option>
+  <option value="Marathi">Marathi</option>
+  <option value="Mongolian">Mongolian</option>
+  <option value="Nepali">Nepali</option>
+  <option value="Norwegian">Norwegian</option>
+  <option value="Persian">Persian</option>
+  <option value="Polish">Polish</option>
+  <option value="Portuguese">Portuguese</option>
+  <option value="Punjabi">Punjabi</option>
+  <option value="Quechua">Quechua</option>
+  <option value="Romanian">Romanian</option>
+  <option value="Russian">Russian</option>
+  <option value="Samoan">Samoan</option>
+  <option value="Serbian">Serbian</option>
+  <option value="Slovak">Slovak</option>
+  <option value="Slovenian">Slovenian</option>
+  <option value="Spanish">Spanish</option>
+  <option value="Swahili">Swahili</option>
+  <option value="Swedish ">Swedish </option>
+  <option value="Tamil">Tamil</option>
+  <option value="Tatar">Tatar</option>
+  <option value="Telugu">Telugu</option>
+  <option value="Thai">Thai</option>
+  <option value="Tibetan">Tibetan</option>
+  <option value="Tonga">Tonga</option>
+  <option value="Turkish">Turkish</option>
+  <option value="Ukrainian">Ukrainian</option>
+  <option value="Urdu">Urdu</option>
+  <option value="Uzbek">Uzbek</option>
+  <option value="Vietnamese">Vietnamese</option>
+  <option value="Welsh">Welsh</option>
+  <option value="Xhosa">Xhosa</option>
+                </select>
+              </div>
+
               <div className="flex justify-between gap-6 w-full items-center">
                 <div className="w-full">
                   <label htmlFor="default-range" className="block mb-2 text-sm font-medium text-gray-900">Number of FAQs you want to generate</label>
@@ -122,9 +195,10 @@ export default function FaqGenerator() {
                     }} />
 
                   <div className="w-full flex justify-between mt-2">
-                    <span className="text-sm text-gray-400 font-medium">1</span>
-                    <span className="text-sm text-gray-400 font-medium">5</span>
-                    <span className="text-sm text-gray-400 font-medium">10</span>
+                    <span className="text-sm text-gray-400 font-medium pl-1">1</span>
+                    <span className="text-sm text-gray-400 font-medium pr-1">5</span>
+                    <span className="text-sm text-gray-400 font-medium pr-1">10</span>
+                    <span className="text-sm text-gray-400 font-medium pr-2">15</span>
                     <span className="text-sm text-gray-400 font-medium">20</span>
 
                   </div>
@@ -140,12 +214,12 @@ export default function FaqGenerator() {
                   Select Tone
                 </label>
                 <select
-                  className="p-2 block w-full py-2 text-gray-900 border-0 shadow-sm bg-white rounded-xl ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                  className=" appearance-none p-2 block w-full py-2 text-gray-900 border-0 shadow-sm bg-white rounded-xl ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   id="persona"
                   value={persona}
                   onChange={(e) => setPersona(e.target.value)}>
 
-                  <option value="Professional" selected>
+                  <option value="Professional">
                     Professional
                   </option>
                   <option value="Formal">
@@ -182,8 +256,8 @@ export default function FaqGenerator() {
           <div className="bg-white w-full flex flex-col max-h-[572px]">
             <div className="flex justify-between w-full p-4">
               <div className="flex items-center gap-2">
-                <img className="w-auto h-3 md:h-4" src="../images/logo.svg" alt="" />
-                <span className="text-gray-950 font-medium text-sm">FAQ Generator</span>
+                <img className="w-auto h-5 md:h-5" src="../images/logo.svg" alt="" />
+                <span className="text-gray-950 font-medium text-sm">SiteGPT FAQ Generator</span>
               </div>
               <div className="p-2 hover:bg-gray-100 rounded-md cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -195,9 +269,10 @@ export default function FaqGenerator() {
               <div className="bg-gray-100 h-full rounded-xl p-3 pt-1 overflow-y-auto">
 
                 <p className="text-sm font-normal leading-6">
+                  
                   <span className="pl-5">
                     {faqs.map((faq, index) => (
-                      <p className=" mb-2 font-medium" key={index}>{faq}</p>
+                      <p className=" mb-2 " key={index}>{faq}</p>
                     ))}
                   </span>
                 </p>
