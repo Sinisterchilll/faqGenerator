@@ -2,14 +2,20 @@
 import { ChangeEvent, useState } from 'react';
 import axios from 'axios'; // Import Axios for HTTP requests
 
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
 export default function FaqGenerator() {
   const [content, setContent] = useState('');
   const [numQuestions, setNumQuestions] = useState(10);
   const [language, setLanguage] = useState('English');
   const [persona, setPersona] = useState('professional');
-  const [faqs, setFaqs] = useState<string[]>([]);
+  const [faqs, setFaqs] = useState<FAQ[]>([]);
   const [loading, setLoading] = useState(false);
   const [copySuccess, setCopySuccess] = useState('');
+  
 
   const handleCopy = () => {
     const faqText = faqs.join('\n');
@@ -287,7 +293,14 @@ export default function FaqGenerator() {
                   
                   <span className="pl-5">
                     {faqs.map((faq, index) => (
-                      <p className=" mb-2 " key={index}>{faq}</p>
+                      <div key={index} className="mb-4">
+                      <span className=" font-bold text-gray-900">
+                       Q{index+1}: {faq.question}:
+                    </span>
+                    <p className="mt-2 text-base font-normal text-gray-700">
+                      Ans: {faq.answer}
+                    </p>
+                    </div>
                     ))}
                   </span>
                 </p>
